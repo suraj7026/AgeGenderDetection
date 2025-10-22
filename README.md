@@ -24,23 +24,53 @@ A Streamlit application that uses your webcam to detect faces and predict their 
    cd AgeGenderDetection
    ```
 
-2. **Install dependencies:**
+2. **Create a virtual environment:**
+   ```bash
+   python -m venv venv
+   ```
+
+3. **Activate the virtual environment:**
+   
+   **Windows (Command Prompt):**
+   ```bash
+   venv\Scripts\activate.bat
+   ```
+   
+   **Windows (PowerShell):**
+   ```powershell
+   .\venv\Scripts\Activate.ps1
+   ```
+   
+   **Linux/Mac:**
+   ```bash
+   source venv/bin/activate
+   ```
+
+4. **Install dependencies:**
    ```bash
    pip install -r requirements.txt
    ```
 
-3. **Ensure model files are present:**
+5. **Ensure model files are present:**
    - `agemodel.h5` - Age prediction model
    - `gendermodel.h5` - Gender classification model
 
 ## Usage
 
-1. **Run the application:**
+### Quick Start (Windows)
+
+Simply double-click `run_app.bat` or `run_app.ps1` to start the application!
+
+### Manual Start
+
+1. **Activate the virtual environment** (see step 3 above)
+
+2. **Run the application:**
    ```bash
    streamlit run app.py
    ```
 
-2. **Open your browser** to the URL shown in the terminal (usually `http://localhost:8501`)
+3. **Open your browser** to the URL shown in the terminal (usually `http://localhost:8501` or `http://localhost:8502`)
 
 3. **Start detection:**
    - Check the "Start Webcam" box to begin real-time detection
@@ -88,10 +118,15 @@ A Streamlit application that uses your webcam to detect faces and predict their 
 
 ## Technical Details
 
-- **Face Detection**: MTCNN with confidence threshold 0.9
+- **Framework**: Streamlit web application with OpenCV for video processing
+- **Face Detection**: MTCNN (Multi-task CNN) with confidence threshold 0.9
+- **Age Model Input**: 200x200 RGB images
+- **Gender Model Input**: 128x128 RGB images  
 - **Age Range**: Clipped to 0-100 years for realistic predictions
 - **Gender Threshold**: 0.5 probability threshold for Male/Female classification
 - **Frame Processing**: Real-time BGR to RGB conversion for model compatibility
+- **Virtual Environment**: Isolated Python environment for dependency management
+- **TensorFlow Version**: 2.20.0 with Keras 3.11.3
 
 ## License
 
